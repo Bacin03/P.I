@@ -6,45 +6,14 @@
     <title>Controle de Financas</title>
 </head>
 <body>
-   
-    <input type="submit" value="Nova Tarefa" onclick="novaTarefa()" id="envio"> <br>
-    
-
-    <input type="text" placeholder = "Gasto"><input type="number" placeholder = "Custo"><br>
-   
-
-    
-<script>
-    function novaTarefa(){
-       var divInputs = document.createElement("div")
-       
-        var tarefa = document.createElement("input")
-        tarefa.type = "text"
-        tarefa.placeholder = "Gasto"
-        document.body.appendChild(tarefa)
-                
-        var numero = document.createElement("input")
-        numero.type = "number"
-        numero.placeholder = "Custo"
-        document.body.appendChild(numero)
-        document.body.appendChild(divInputs)
-
-        
-        
-    
-    }
-    var envio = document.getElementById("envio")
-    envio.addEventListener("submit",(event) =>{
-    event.preventDefault()
-    })
-
-        
-
-
-</script>
-
-     
-        
-    
+   <hr>
+  
+    Controle de Finanças <br> 
+    <input type="text" placeholder = "Gasto">
+    <input type="number" placeholder = "Custo"> <br>
+ 
+    <br> <input type="submit" value="Enviar" onclick="novaTarefa()" id="envio"> <br>  <hr>
+    Gastos  
+ 
 </body>
 </html>
