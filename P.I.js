@@ -7,22 +7,23 @@ var custo_db = [];
 function mostrar() {
     var alterar = [];
     for (var i = 0; i < gasto_db.length; i++) {
-        alterar += "Gasto " + (i + 1) + ": " + gasto_db[i].gasto + "<br> Custo " + (i + 1) + " :" + custo_db[i].custo 
-         + "<button onclick=\"deletar(" + i + ")\">Remover</button><br>";
+        alterar += "Gasto " + (i + 1) + ": " + gasto_db[i].gasto + "<br> Custo " + (i + 1) + ": " + custo_db[i].custo 
+         + "    <button onclick=\"deletar(" + i + ")\">Remover</button><br>";
     }
     document.getElementById("resposta").innerHTML = alterar;
 }
-    //Criando a Função para Adicionar
+    //Criando a Função para Adicionar na Array
     function enviar() {
      //Enviando os conteúdo para o Banco de Dados
-        var gasto = document.getElementById('gasto').value;
-        var custo = document.getElementById('custo').value;
+        let gasto = document.getElementById('gasto').value;
+        let custo = document.getElementById('custo').value;
         console.log(gasto);
         console.log(custo);
         gasto_db.push({ gasto: gasto });
         custo_db.push({custo: custo});
         mostrar();
-        
+         gasto.value = '';
+        custo.value = '';
     }
 
     //Remover tarefa a array
@@ -31,6 +32,7 @@ function mostrar() {
         gasto_db.splice(i, 1);
         mostrar();
     }
+
 
 
 
