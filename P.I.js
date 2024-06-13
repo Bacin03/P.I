@@ -7,7 +7,7 @@ var custo_db = [];
 function mostrar() {
     var alterar = [];
     for (var i = 0; i < gasto_db.length; i++) {
-        alterar += "Gasto " + (i + 1) + ": " + gasto_db[0].gasto + " <button onclick=\"deletar(" + i + ")\">Remover</button><br>";
+        alterar += "Gasto " + (i + 1) + ": " + gasto_db[i].gasto + " <button onclick=\"deletar(" + i + ")\">Remover</button><br>";
     }
     document.getElementById("resposta").innerHTML = alterar;
 }
