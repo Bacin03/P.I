@@ -1,5 +1,5 @@
 
-//Definindo os Bancos de Dados
+//Criando os Bancos de Dados
 var gasto_db = [];
 var custo_db = [];
 
@@ -11,21 +11,16 @@ function mostrar() {
     }
     document.getElementById("resposta").innerHTML = alterar;
 }
-    //Criando a Função para Adicionar
+   //Enviando os conteúdo para o Banco de Dados
     function enviar() {
-     //Enviando os conteúdo para o Banco de Dados
         var gasto = document.getElementById('gasto').value;
         var custo = document.getElementById('custo').value;
-        console.log(gasto);
-        console.log(custo);
         gasto_db.push({ gasto: gasto });
         mostrar();
-        
     }
 
-    //Remover tarefa a array
+    //Função para Deletar
     function deletar(i) {
-        // Usando splice para remover a tarefa
         gasto_db.splice(i, 1);
         mostrar();
     }
