@@ -31,7 +31,23 @@ function mostrar() {
         mostrar();
     }
 
+    //Função para fazer a entrada de dados mais simples com a tecla 'ENTER'
+    function enter(event) {
+        const tecla = event.key;
 
+        if (tecla === 'Enter') {
+            enviar();
+        }
+    }
+     function totalDespesas () {
+        let sal = document.getElementById('sal').value;
 
+            let total = "<hr> O total de suas despesas é + (var despesas) + e somando com sua renda o que sobra " + "R$" + (sal - 1000);
+    
+            /*coloquei o Número 1000 de exemplo pq tenho que
+            fazer a função para somar o total da array*/
 
+            document.getElementById('total').innerHTML = total;
 
+     }
+            
