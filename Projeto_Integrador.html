@@ -9,7 +9,7 @@
    <hr>
     Controle de Finanças <br> 
     <input type="text" placeholder = "Gasto" id="gasto">
-    <input type="text" placeholder = "Custo" id="custo"> <br>
+    <input type="number" placeholder = "Custo" id="custo" onkeypress="enter(event)"> <br>
     <br> <input type="submit" value="Enviar" onclick="enviar()" id="envio"> <br>  <hr>
     <div id="resposta">
         Gastos
@@ -17,7 +17,11 @@
 
     <div id="total">
         <br>
-        Total Mensal
+        Renda
+        <input type="number" placeholder="Salário" id="sal" onkeypress="enter(event)">
+        <input type="submit" value="Enviar" onclick="totalDespesas()">
+       <br> Total
+
     </div>
  <script src="P.I.js"></script>
 </body>
