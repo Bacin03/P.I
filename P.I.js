@@ -1,4 +1,3 @@
-
 //Definindo os Bancos de Dados
 var banco = [];
 
@@ -10,6 +9,9 @@ function mostrar() {
          + "    <button onclick=\"deletar(" + i + ")\">Remover</button><br>";
     }
     document.getElementById("resposta").innerHTML = alterar;
+    //Função exibir total para automatizar a tela
+    exibirTotal();
+    
 }
     //Criando a Função para Adicionar na Array
     function enviar() {
@@ -18,10 +20,12 @@ function mostrar() {
         let custo = document.getElementById('custo').value;
         console.log(gasto);
         console.log(custo);
-        banco.push({ gasto: gasto , custo: custo });
+        banco.push({ gasto: gasto , custo: parseFloat(custo) });
         mostrar();
-         gasto.value = '';
-        custo.value = '';
+        document.getElementById('gasto').value = ''; // Limpa os campos
+        document.getElementById('custo').value = '';
+
+        
     }
 
     //Remover tarefa a array
@@ -39,15 +43,22 @@ function mostrar() {
             enviar();
         }
     }
-     function totalDespesas () {
+     function sobra () {
         let sal = document.getElementById('sal').value;
-
-            let total = "<hr> O total de suas despesas é + (var despesas) + e somando com sua renda o que sobra " + "R$" + (sal - 1000);
-    
-            /*coloquei o Número 1000 de exemplo pq tenho que
-            fazer a função para somar o total da array*/
-
-            document.getElementById('total').innerHTML = total;
-
+            console.log(sal)
+          const totalDespesas = banco.reduce((total, gasto) => total + gasto.custo, 0);
+            let sobra = "<hr> O total de suas despesas é "+ totalDespesas +" e calculando com sua renda " + sal + " sua receita é " + "R$ " + (sal - totalDespesas);
+            document.getElementById('sobra').innerHTML = sobra 
+            + "<br><input type=\"number\" placeholder=\"Salário\" id=\"sal\" onkeypress=\"enter(event)\">" + "<br><br> <button onclick=\"sobra()\">Atualizar</button><br>";
      }
-            
+     function calcularTotalDespesas() {
+        const totalDespesas = banco.reduce((total, gasto) => total + gasto.custo, 0);
+        return totalDespesas;
+    }
+    
+    // Exibir o total na tela das despesas na tela
+    function exibirTotal() {
+        const total = calcularTotalDespesas();
+        document.getElementById('total').innerHTML = `Total de despesas: R$ ${total.toFixed(2)}`;
+    }
+      
