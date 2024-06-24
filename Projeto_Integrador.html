@@ -8,25 +8,32 @@
 <body>
    <hr>
     Controle de Finanças <br> 
-    <input type="text" placeholder = "Gasto" id="gasto">
-    <input type="number" placeholder = "Custo" id="custo" onkeypress="enviar_gasto(event)"> <br>
+    <input type="number" placeholder="Salário R$" id="sal" onkeypress="enviar_salario(event)">
+    <input type="text" placeholder = "Nome do Gasto" id="gasto">
+    <input type="number" placeholder = "Custo R$" id="custo" onkeypress="enviar_gasto(event)"> <br>
     <br> <input type="submit" value="Enviar" onclick="enviar()" id="envio"> <br>  <hr>
     <div id="resposta">
-        Gastos
+        Seus Gastos Vão Aparecer Aqui!!!
         <br>
         <br>
     </div>
     <div id="total">
-        <br>
-       <br>
     </div>
     <br>
     <div id="sobra">
     </div>
-    <div>
-          <input type="number" placeholder="Salário" id="sal" onkeypress="enviar_salario(event)">
-          <input type="submit" value="ExibirTotal" onclick="sobra()">
-    </div>
+        <div id="juros">
+            <h2>Calculadora de Juros Compostos</h2>
+            <label for="principal">Capital (R$):</label>
+            <input type="number" id="principal" min="0" step="any" required><br><br>
+            <label for="taxa">Taxa de juros (% ao mês):</label>
+            <input type="number" id="taxa" min="0" step="any" required><br><br>
+            <label for="tempo">Tempo (meses):</label>
+            <input type="number" id="tempo" min="0" step="1" required><br><br>
+            <label for="investimento">Investimento mensal (R$):</label>
+            <input type="number" id="investimento" min="0" step="any" required><br><br>
+            <button onclick="calcularJurosCompostos()">Calcular</button>
+        <div id="resultadoJuros"></div>
  <script src="P.I.js"></script>
 </body>
 </html>
