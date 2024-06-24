@@ -23,12 +23,11 @@ function mostrar() {
                 alert("Os campos Gasto e Custo NÃO PODEM SER VAZIOS!!!");
                 return;
             } 
-                console.log(gasto);
-                console.log(custo);
+
         banco.push({ gasto: gasto , custo: parseFloat(custo) });
         document.getElementById('gasto').value = ''; // Limpa os campos
         document.getElementById('custo').value = '';
-            //Chama a Função para Atualizar Automaticamente sem atualizar o Site
+            //Chama a Função para Atualizar Automaticamente sem REALMENTE atualizar o Site
         mostrar();
         }
 
@@ -47,7 +46,7 @@ function mostrar() {
             enviar();
         }
     }
-    //Função para enviar salários
+    //Função para enviar salários com a tecla 'ENTER'
     function enviar_salario(event) {
         const tecla = event.key;
 
@@ -67,21 +66,54 @@ var totalDespesas = "";
         let sal = parseFloat(document.getElementById('sal').value);
         console.log(sal)
         if (isNaN(sal)) {
-            alert("O campo Salário não pode ser vazio");
+            alert("O campo Salário está vazio");
             return;
         }
         
-        
+    
         let sobra = sal - totalDespesas;
     
-        document.getElementById('sobra').innerHTML = `<hr> O total de suas despesas é R$ ${totalDespesas.toFixed(2)} e considerando sua receita de R$ ${sal.toFixed(2)}, sua receita é R$ ${sobra.toFixed(2)}`;
+        document.getElementById('sobra').innerHTML = `<hr> O total de suas despesas é R$ ${totalDespesas.toFixed(2)} e considerando sua receita de R$ ${sal.toFixed(2)}, sua receita é R$ ${sobra.toFixed(2)}`
+        + " <br> <button onclick=\"limparTela(resposta,sobra)\">Limpar a Tela</button>";
     }
     
     
     // Exibir o total na tela das despesas na tela
     function exibirTotal() {
         const total = calcularTotalDespesas();
-        document.getElementById('total').innerHTML = `Total de despesas: R$`;
         sobra ();
     }
       
+    // Função Para Limpar a Tela
+     function limparTela (resposta, sobra) {
+        document.getElementById("resposta").innerHTML = '';
+        document.getElementById('sobra').innerHTML = '';
+        banco = [];
+     } 
+
+    //Calculadora de juros compostos
+    function calcularJurosCompostos() {
+        var principal = parseFloat(document.getElementById('principal').value);
+        var investimento = parseFloat(document.getElementById('investimento').value);
+        var taxa = parseFloat(document.getElementById('taxa').value) / 100;
+        var tempo = parseInt(document.getElementById('tempo').value);
+
+        var montante = principal;
+        var totalInvestido = principal;
+
+        for (var i = 1; i <= tempo; i++) {
+            montante *= (1 + taxa); // Aplica juros sobre o montante atual
+            montante += investimento; // Adiciona o investimento mensal ao montante
+            totalInvestido += investimento; // Atualiza o total investido
+        }
+
+        var juros = montante - totalInvestido;
+
+        var resultado = `
+            <p>Montante após ${tempo} meses: R$ ${montante.toFixed(2)}</p>
+            <p>Total investido: R$ ${totalInvestido.toFixed(2)}</p>
+            <p>Juros acumulados: R$ ${juros.toFixed(2)}</p>
+        `;
+
+        document.getElementById('resultadoJuros').innerHTML = resultado;
+    }
